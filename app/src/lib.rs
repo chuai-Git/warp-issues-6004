@@ -1102,8 +1102,6 @@ fn run_internal(mut launch_mode: LaunchMode) -> Result<()> {
             Err(app_services::linux::StartupArgsForwardingError::NoExistingInstance) => {}
             // If we just finished an auto-update, we should continue running.
             Err(app_services::linux::StartupArgsForwardingError::IgnoredAfterAutoUpdate) => {}
-            // The crash recovery watcher process should continue running so it
-            // can wait on its parent; it must not forward args to it.
             Err(app_services::linux::StartupArgsForwardingError::IgnoredForCrashRecoveryProcess) => {}
             // If we were unable to perform the forwarding for an unknown reason,
             // it's better to run a second instance than potentially end up in a
@@ -1128,8 +1126,6 @@ fn run_internal(mut launch_mode: LaunchMode) -> Result<()> {
             Err(app_services::windows::StartupArgsForwardingError::NoExistingInstance) => {}
             // If we just finished an auto-update, we should continue running.
             Err(app_services::windows::StartupArgsForwardingError::IgnoredAfterAutoUpdate) => {}
-            // The crash recovery watcher process should continue running so it
-            // can wait on its parent; it must not forward args to it.
             Err(app_services::windows::StartupArgsForwardingError::IgnoredForCrashRecoveryProcess) => {}
             // If we were unable to perform the forwarding for an unknown reason,
             // it's better to run a second instance than potentially end up in a
